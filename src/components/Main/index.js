@@ -1,7 +1,5 @@
 const MainContent = () => {
-    return ( 
-        
-     );
-}
- 
+  return <main></main>;
+};
+
 export default MainContent;
