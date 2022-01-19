@@ -1,0 +1,45 @@
+Front End React
+
+Build two component : one for the header / and other main content
+
+Component H1 Header
+Title, Logo
+
+Main content First Page
+Clickable unstyled button (to begin with ) Fetch request to the topic
+Build a Component for each topic.
+After each 'click' another question will appear with the button
+The question will tell you are right or wrong. Question will only change when you click again for the next question.
+Each question will be a state and will re-load everytime
+
+Questions:
+The questions will be looped within an array.
+We will have a counter that track the points of the correct answers.
+On the last question the button will change to results.
+Include another button that can say 'play again'
+
+Back-End
+
+To use Express for creating a Node Project
+Create the tables in SQL - Player 1 only to start, then could have 2 players, groups playing.
+Id, Question, Right answer, wrong answer.
+We will have multiple tables,one for each topic & populate.
+
+Handle Request (route) GET, POST , Request, Response
+
+The fetch request goes to a route.
+
+Need a model to handle the request of the data.
+
+=============== GIT BRANCH/MERGE========================
+
+// Alex note: created 2 branches - branch-1 - branch-2
+
+# -- Switch to branch 2 example - git checkout branch-1
+
+-- To merge branch-1 to main:
+-- Step.1 - git checkout main
+-- Step.2 - From master/main - git merge branch-1
+-- Check github for conflicts, accept pull request etc
+
+========================================================
