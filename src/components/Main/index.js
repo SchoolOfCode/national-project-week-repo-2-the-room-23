@@ -1,5 +1,9 @@
+import Quiz from "../Quiz";
 const MainContent = () => {
-  return <main></main>;
+  return <main>
+    <button>Next question</button>
+    <Quiz/>
+  </main>;
 };
 
 export default MainContent;
