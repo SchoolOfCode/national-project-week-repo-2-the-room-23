@@ -1,7 +1,8 @@
-import Quiz from "../Quiz";
+import NextQuestion from "../NextQuestion";
+import Quiz from '../Quiz/index'
 const MainContent = () => {
   return <main>
-    <button>Next question</button>
+    <NextQuestion/>
     <Quiz/>
   </main>;
 };
