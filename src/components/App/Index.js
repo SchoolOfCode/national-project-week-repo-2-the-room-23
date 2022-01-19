@@ -9,9 +9,8 @@ function App() {
   
   useEffect(() => {
     async function getData() {
-      console.log(API_URL);
+  
       const response = await fetch(`${API_URL}/questions`);
-      console.log(response);
       const data = await response.json();
       console.log(data);
     }
