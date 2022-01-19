@@ -9,7 +9,7 @@ const MainContent = ({topic}) => {
   const [questionsArray, setQuestionsArray] = useState([]);
 
   const [actualQuestion, setActualQuestion] = useState({});
-
+  console.log(actualQuestion);
   const [position, setPosition ] = useState(0);
 
   //console.log(questionsArray);
@@ -20,11 +20,11 @@ const MainContent = ({topic}) => {
       const response = await fetch(`${API_URL}/questions`);
       const data = await response.json();
       setQuestionsArray(data.payload);
-      setActualQuestion(questionsArray[position])
+      setActualQuestion(data.payload[0])
       //console.log(data);
     }
     getData();
-  }, [topic]);
+  }, []);
 
 
   function handleNextQuestion() {
