@@ -5,7 +5,6 @@
 }
 
 .intro {
-  border: 3px solid red;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,16 +16,15 @@
   background: var(--background-color);
 }
 
-.text-container {
+/* .text-container {
   border: 3px solid red;
-}
+} */
 
 .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   max-width: 1250px;
-  border: 3px solid yellow;
 }
 
 .intro__text {
