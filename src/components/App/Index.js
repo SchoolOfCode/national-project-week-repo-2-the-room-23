@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { API_URL } from "../../config/index.js";
 import "./App.css";
+
 import { Routes, Route } from "react-router-dom";
 import Header from "../Header";
 import Introduction from "../Introduction/index.js";
+
 
 function App() {
   useEffect(() => {
@@ -17,6 +19,8 @@ function App() {
 
   return (
     <div className="App">
+
+     <Introduction/>
       <Header />
       <Routes>
         <Route path="/" element={<Introduction />} />
