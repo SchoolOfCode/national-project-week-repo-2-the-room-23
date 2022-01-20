@@ -4,46 +4,34 @@ import Answers from "../Answers/index";
 import SubmitButton from "../SubmitButton/index";
 import { Link } from "react-router-dom";
 
-function Quiz({actualQuestion, position, correctAnswer}){
+function Quiz({actualQuestion, handleResult, position }){
 
-const [chosenAnswer, setChosenAnswer] = useState(""); 
+
 //console.log(chosenAnswer);
-const [disable, setDisable] = useState(false);
+//const [disable, setDisable] = useState(false);
 //const [answersColor , setanswerColor] = useState("");
 //console.log(chosenAnswer);
 //console.log(actualQuestion.answer);
 
-
+/*
 
   function getAnswerValue(event) {
     setChosenAnswer(event.target.value);
     setDisable(true);
   }
 
-   function checkResult(event) {
-     console.log(event.target.innerText);
-    if ( event.target.innerText === actualQuestion.answer) {
-        event.target.className = "green";
-        console.log("correct");
-        //correctAnswer();
-    }else{
-       event.target.className = "red";
-       console.log("incorrect");
-     }
-  }
-
-
+*/
 
     return ( 
       <div>
         <QuestionText  text={actualQuestion.question} id={actualQuestion.id} />
-        <Answers handleAnswerValue={getAnswerValue} 
-                 handleResult={checkResult}
+        <Answers  
+                 handleResult={handleResult}
                  answer={actualQuestion.answer} 
                  optA={actualQuestion.opta} 
                  optB={actualQuestion.optb} 
                  optC={actualQuestion.optc}
-                 disable={disable}
+                 //disable={disable}
                   
                  />
         <SubmitButton/>

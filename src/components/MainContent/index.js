@@ -7,10 +7,15 @@ const MainContent = ({ topic }) => {
   const [questionsArray, setQuestionsArray] = useState([]);
 
   const [actualQuestion, setActualQuestion] = useState({});
-  console.log(actualQuestion);
+  //console.log(actualQuestion);
   const [position, setPosition] = useState(1);
 
   const [progression, setProgression] = useState(0);
+
+  //const [chosenAnswer, setChosenAnswer] = useState(""); 
+
+
+
   //console.log(questionsArray);
 
   useEffect(() => {
@@ -33,10 +38,25 @@ const MainContent = ({ topic }) => {
     setProgression(progression + 1);
   }
 
+   function checkResult(event) {
+     console.log(event.target.innerText);
+    if ( event.target.innerText === actualQuestion.answer) {
+        event.target.className = "green";
+        console.log("correct");
+        //correctAnswer();
+    }else{
+       event.target.className = "red";
+       console.log("incorrect");
+     }
+  }
+
   return (
        <main>
          <NextQuestion handleNextQuestion={handleNextQuestion}  />
-         <Quiz actualQuestion={actualQuestion}  position={position} correctAnswer={correctAnswer} />
+         <Quiz actualQuestion={actualQuestion} 
+               position={position} 
+               correctAnswer={correctAnswer}
+               handleResult={checkResult} />
        </main>
   )
 };
