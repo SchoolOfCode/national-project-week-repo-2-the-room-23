@@ -18,9 +18,15 @@
 }
 
 .link {
-  padding: 2rem 1rem;
+  display: inline-flex;
+  padding: 1rem 2rem;
+  margin: 0 2rem;
   text-decoration: none;
   font-family: monospace;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--color);
+}
+
+.head {
+  margin-top: 3rem;
 }

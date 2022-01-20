@@ -3,6 +3,7 @@ import Quiz from "../Quiz/index";
 import { API_URL } from "../../config/index.js";
 import { useEffect, useState } from "react";
 import "./MainContent.css";
+import { Link } from "react-router-dom";
 
 const MainContent = ({ topic }) => {
   const [questionsArray, setQuestionsArray] = useState([]);
@@ -13,9 +14,7 @@ const MainContent = ({ topic }) => {
 
   const [progression, setProgression] = useState(0);
 
-  //const [chosenAnswer, setChosenAnswer] = useState(""); 
-
-
+  //const [chosenAnswer, setChosenAnswer] = useState("");
 
   //console.log(questionsArray);
 
@@ -30,7 +29,7 @@ const MainContent = ({ topic }) => {
     getData(topic);
   }, [topic]);
 
-  function changeQuestion(){
+  function changeQuestion() {
     setActualQuestion(questionsArray[position]);
   }
 
@@ -42,28 +41,40 @@ const MainContent = ({ topic }) => {
     setProgression(progression + 1);
   }
 
-   function checkResult(event) {
-     console.log(event.target.innerText);
-     console.log(actualQuestion.answer);
-    if ( event.target.innerText === actualQuestion.answer) {
-        event.target.className = "green";
-        console.log("correct");
-        //correctAnswer();
-    }else{
-       event.target.className = "red";
-       console.log("incorrect");
-     }
+  function checkResult(event) {
+    console.log(event.target.innerText);
+    console.log(actualQuestion.answer);
+    if (event.target.innerText === actualQuestion.answer) {
+      event.target.className = "green";
+      console.log("correct");
+      //correctAnswer();
+    } else {
+      event.target.className = "red";
+      console.log("incorrect");
+    }
   }
 
   return (
-       <main>
-         <NextQuestion handleChangeQuestion={changeQuestion} handleNextQuestion={handleNextQuestion}  />
-         <Quiz actualQuestion={actualQuestion} 
-               position={position} 
-               correctAnswer={correctAnswer}
-               handleResult={checkResult} />
-       </main>
-  )
+    <main>
+      <NextQuestion
+        handleChangeQuestion={changeQuestion}
+        handleNextQuestion={handleNextQuestion}
+      />
+      <Quiz
+        actualQuestion={actualQuestion}
+        position={position}
+        correctAnswer={correctAnswer}
+        handleResult={checkResult}
+      />
+      <Link className="link" to="/">
+        Home
+      </Link>{" "}
+      <br />
+      <Link className="link" to="/answers">
+        Click for your results
+      </Link>
+    </main>
+  );
 };
 
 export default MainContent;
