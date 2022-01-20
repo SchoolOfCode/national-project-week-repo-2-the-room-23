@@ -1,0 +1,26 @@
+:root {
+  --background-color: #32a4dc;
+  --color: #000817;
+  --secondary-color: #ffffff;
+}
+
+.flex-container {
+  display: inline-flex;
+  max-width: 600px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-family: monospace;
+  font-size: 2rem;
+}
+
+.link {
+  padding: 2rem 1rem;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 2rem;
+  color: var(--color);
+}

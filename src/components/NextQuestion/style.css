@@ -1,0 +1,11 @@
+.button {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #32a4dc;
+  color: white;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 2px 5px #888888;
+}
