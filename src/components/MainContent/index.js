@@ -2,9 +2,10 @@ import NextQuestion from "../NextQuestion";
 import Quiz from "../Quiz/index";
 import { API_URL } from "../../config/index.js";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./MainContent.css";
 
-const MainContent = ({ topic }) => {
+const MainContent = ({ topic, handleAddPoints }) => {
   const [questionsArray, setQuestionsArray] = useState([]);
 
   const [actualQuestion, setActualQuestion] = useState({});
@@ -13,7 +14,7 @@ const MainContent = ({ topic }) => {
 
   const [progression, setProgression] = useState(0);
 
-  //const [chosenAnswer, setChosenAnswer] = useState(""); 
+  const [disable, setDisable] = useState(false); 
 
 
 
@@ -30,6 +31,10 @@ const MainContent = ({ topic }) => {
     getData(topic);
   }, [topic]);
 
+  function handleDisable() {
+    setDisable(true);
+  }
+
   function changeQuestion(){
     setActualQuestion(questionsArray[position]);
   }
@@ -43,11 +48,13 @@ const MainContent = ({ topic }) => {
   }
 
    function checkResult(event) {
+     setDisable(true);
      console.log(event.target.innerText);
      console.log(actualQuestion.answer);
     if ( event.target.innerText === actualQuestion.answer) {
         event.target.className = "green";
         console.log("correct");
+        handleAddPoints();
         //correctAnswer();
     }else{
        event.target.className = "red";
@@ -57,11 +64,13 @@ const MainContent = ({ topic }) => {
 
   return (
        <main>
-         <NextQuestion handleChangeQuestion={changeQuestion} handleNextQuestion={handleNextQuestion}  />
-         <Quiz actualQuestion={actualQuestion} 
+         <NextQuestion handleChangeQuestion={changeQuestion} handleNextQuestion={handleNextQuestion} handleDisable={handleDisable}  />
+         <Quiz actualQuestion={actualQuestion}
+               disable={disable} 
                position={position} 
                correctAnswer={correctAnswer}
                handleResult={checkResult} />
+        <Link to="/results">See your sesult</Link>
        </main>
   )
 };

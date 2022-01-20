@@ -5,10 +5,8 @@ function Answer({text, className, handleAnswerValue, handleResult, disable}) {
 
 
   return (
-
-
-      <p className={className} onClick={(event) => {return handleResult(event)}}>{text}</p>
-  
+    
+      <p className={className} onClick={disable === false ? (event) => {return handleResult(event)} : () => {} }>{text}</p>
 
   )
 }

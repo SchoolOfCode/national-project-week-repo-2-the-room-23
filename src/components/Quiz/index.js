@@ -4,7 +4,7 @@ import Answers from "../Answers/index";
 import SubmitButton from "../SubmitButton/index";
 import { Link } from "react-router-dom";
 
-function Quiz({actualQuestion, handleResult, position }){
+function Quiz({actualQuestion, handleResult, disable }){
 
 
 //console.log(chosenAnswer);
@@ -27,6 +27,7 @@ function Quiz({actualQuestion, handleResult, position }){
         <QuestionText  text={actualQuestion.question} id={actualQuestion.id} />
         <Answers  
                  handleResult={handleResult}
+                 disable={disable}
                  answer={actualQuestion.answer} 
                  optA={actualQuestion.opta} 
                  optB={actualQuestion.optb} 
@@ -34,7 +35,6 @@ function Quiz({actualQuestion, handleResult, position }){
                  //disable={disable}
                   
                  />
-        <SubmitButton/>
         <Link to="/">Home</Link>
       </div>
     )

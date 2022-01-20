@@ -26,7 +26,7 @@ const randomArray = randomizeArray(answersArray);
 
 return(
        <ul>
-          {randomArray.map( (element,index) => {
+          {answersArray.map( (element,index) => {
              return( 
                                               <Answer handleAnswerValue={handleAnswerValue}
                                               className="white"
