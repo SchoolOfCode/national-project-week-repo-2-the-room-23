@@ -18,15 +18,10 @@ function App() {
   }, []); */
 
   const [topic, setTopic] = useState("");
-  const [result, setResult] = useState(0);
 
   function getTopicValue(event) {
     const newTopic = event.target.name;
     setTopic(newTopic);
-  }
-
-  function count() {
-    setResult(result + 1);
   }
 
   return (
