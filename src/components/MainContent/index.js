@@ -2,6 +2,7 @@ import NextQuestion from "../NextQuestion";
 import Quiz from "../Quiz/index";
 import { API_URL } from "../../config/index.js";
 import { useEffect, useState } from "react";
+import ShowResults from "../ShowResults";
 
 const MainContent = ({ topic }) => {
   const [questionsArray, setQuestionsArray] = useState([]);
@@ -9,12 +10,10 @@ const MainContent = ({ topic }) => {
   const [actualQuestion, setActualQuestion] = useState({});
   //console.log(actualQuestion);
   const [position, setPosition] = useState(1);
-
+  const [result, setResult] = useState(0);
   const [progression, setProgression] = useState(0);
 
-  //const [chosenAnswer, setChosenAnswer] = useState(""); 
-
-
+  //const [chosenAnswer, setChosenAnswer] = useState("");
 
   //console.log(questionsArray);
 
@@ -38,27 +37,34 @@ const MainContent = ({ topic }) => {
     setProgression(progression + 1);
   }
 
-   function checkResult(event) {
-     console.log(event.target.innerText);
-    if ( event.target.innerText === actualQuestion.answer) {
-        event.target.className = "green";
-        console.log("correct");
-        //correctAnswer();
-    }else{
-       event.target.className = "red";
-       console.log("incorrect");
-     }
+  function count() {
+    setResult(result + 1);
+  }
+
+  function checkResult(event) {
+    console.log(event.target.innerText);
+    if (event.target.innerText === actualQuestion.answer) {
+      event.target.className = "green";
+      console.log("correct");
+      count();
+    } else {
+      event.target.className = "red";
+      console.log("incorrect");
+    }
   }
 
   return (
-       <main>
-         <NextQuestion handleNextQuestion={handleNextQuestion}  />
-         <Quiz actualQuestion={actualQuestion} 
-               position={position} 
-               correctAnswer={correctAnswer}
-               handleResult={checkResult} />
-       </main>
-  )
+    <main>
+      <NextQuestion handleNextQuestion={handleNextQuestion} />
+      <Quiz
+        actualQuestion={actualQuestion}
+        position={position}
+        correctAnswer={correctAnswer}
+        handleResult={checkResult}
+      />
+      <ShowResults handleCount={count} result={result} />
+    </main>
+  );
 };
 
 export default MainContent;

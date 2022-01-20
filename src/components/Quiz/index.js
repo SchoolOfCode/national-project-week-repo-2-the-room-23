@@ -4,16 +4,14 @@ import Answers from "../Answers/index";
 import SubmitButton from "../SubmitButton/index";
 import { Link } from "react-router-dom";
 
-function Quiz({actualQuestion, handleResult, position }){
+function Quiz({ actualQuestion, handleResult, position }) {
+  //console.log(chosenAnswer);
+  //const [disable, setDisable] = useState(false);
+  //const [answersColor , setanswerColor] = useState("");
+  //console.log(chosenAnswer);
+  //console.log(actualQuestion.answer);
 
-
-//console.log(chosenAnswer);
-//const [disable, setDisable] = useState(false);
-//const [answersColor , setanswerColor] = useState("");
-//console.log(chosenAnswer);
-//console.log(actualQuestion.answer);
-
-/*
+  /*
 
   function getAnswerValue(event) {
     setChosenAnswer(event.target.value);
@@ -22,21 +20,21 @@ function Quiz({actualQuestion, handleResult, position }){
 
 */
 
-    return ( 
-      <div>
-        <QuestionText  text={actualQuestion.question} id={actualQuestion.id} />
-        <Answers  
-                 handleResult={handleResult}
-                 answer={actualQuestion.answer} 
-                 optA={actualQuestion.opta} 
-                 optB={actualQuestion.optb} 
-                 optC={actualQuestion.optc}
-                 //disable={disable}
-                  
-                 />
-        <SubmitButton/>
-        <Link to="/">Home</Link>
-      </div>
-    )
+  return (
+    <div>
+      <QuestionText text={actualQuestion.question} id={actualQuestion.id} />
+      <Answers
+        handleResult={handleResult}
+        answer={actualQuestion.answer}
+        optA={actualQuestion.opta}
+        optB={actualQuestion.optb}
+        optC={actualQuestion.optc}
+        //disable={disable}
+      />
+      <SubmitButton />
+      <Link to="/">Home</Link>
+      <Link to="/answers">Answers</Link>
+    </div>
+  );
 }
 export default Quiz;

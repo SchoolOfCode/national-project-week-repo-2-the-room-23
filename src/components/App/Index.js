@@ -5,9 +5,10 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Header from "../Header";
 import Introduction from "../Introduction/index.js";
+import ShowResults from "../ShowResults/index.js";
 
 function App() {
-/*   useEffect(() => {
+  /*   useEffect(() => {
     async function getData() {
       const response = await fetch(`${API_URL}/questions`);
       const data = await response.json();
@@ -17,20 +18,27 @@ function App() {
   }, []); */
 
   const [topic, setTopic] = useState("");
-
+  const [result, setResult] = useState(0);
 
   function getTopicValue(event) {
-    
     const newTopic = event.target.name;
     setTopic(newTopic);
-  } 
+  }
+
+  function count() {
+    setResult(result + 1);
+  }
 
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Introduction handleTopic={getTopicValue} />} />
+        <Route
+          path="/"
+          element={<Introduction handleTopic={getTopicValue} />}
+        />
         <Route path="/questions" element={<MainContent topic={topic} />} />
+        <Route path="/answers" />
       </Routes>
     </div>
   );
