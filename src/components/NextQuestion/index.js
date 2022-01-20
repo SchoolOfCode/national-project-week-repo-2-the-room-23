@@ -1,8 +1,11 @@
 
 
-function NextQuestion({handleNextQuestion}){
+function NextQuestion({handleNextQuestion, handleChangeQuestion}){
     return <> 
-      <button onClick={() => handleNextQuestion()}>Next Question</button>
+      <button onClick={() => {
+      handleNextQuestion()
+      handleChangeQuestion()}
+      }>Next Question</button>
     </>
 }
 export default NextQuestion

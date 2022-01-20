@@ -1,15 +1,15 @@
 import "./Answer.css";
 
-function Answer({text, handleAnswerValue, handleResult, disable}) {
+function Answer({text, className, handleAnswerValue, handleResult, disable}) {
 
 
 
   return (
 
-    <div>
-      <span onClick={(event) => {return handleResult(event)}}>{text}</span>
+
+      <p className={className} onClick={(event) => {return handleResult(event)}}>{text}</p>
   
-    </div>
+
   )
 }
 

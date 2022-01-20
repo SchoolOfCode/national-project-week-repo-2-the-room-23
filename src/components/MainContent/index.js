@@ -2,12 +2,13 @@ import NextQuestion from "../NextQuestion";
 import Quiz from "../Quiz/index";
 import { API_URL } from "../../config/index.js";
 import { useEffect, useState } from "react";
+import "./MainContent.css";
 
 const MainContent = ({ topic }) => {
   const [questionsArray, setQuestionsArray] = useState([]);
 
   const [actualQuestion, setActualQuestion] = useState({});
-  //console.log(actualQuestion);
+  console.log(actualQuestion);
   const [position, setPosition] = useState(1);
 
   const [progression, setProgression] = useState(0);
@@ -29,9 +30,12 @@ const MainContent = ({ topic }) => {
     getData(topic);
   }, [topic]);
 
+  function changeQuestion(){
+    setActualQuestion(questionsArray[position]);
+  }
+
   function handleNextQuestion() {
     setPosition(position + 1);
-    setActualQuestion(questionsArray[position]);
   }
 
   function correctAnswer() {
@@ -40,6 +44,7 @@ const MainContent = ({ topic }) => {
 
    function checkResult(event) {
      console.log(event.target.innerText);
+     console.log(actualQuestion.answer);
     if ( event.target.innerText === actualQuestion.answer) {
         event.target.className = "green";
         console.log("correct");
@@ -52,7 +57,7 @@ const MainContent = ({ topic }) => {
 
   return (
        <main>
-         <NextQuestion handleNextQuestion={handleNextQuestion}  />
+         <NextQuestion handleChangeQuestion={changeQuestion} handleNextQuestion={handleNextQuestion}  />
          <Quiz actualQuestion={actualQuestion} 
                position={position} 
                correctAnswer={correctAnswer}

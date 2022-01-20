@@ -29,7 +29,7 @@ return(
           {randomArray.map( (element,index) => {
              return( 
                                               <Answer handleAnswerValue={handleAnswerValue}
-                                              className=""
+                                              className="white"
                                               handleResult={handleResult}
                                               text={element} 
                                               disable={disable}
