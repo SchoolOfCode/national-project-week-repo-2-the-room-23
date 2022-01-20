@@ -4,7 +4,9 @@ import "./style.css";
 const ShowResults = ({ count }) => {
   return (
     <div className="scorecontainer">
-      <Link to="/">Home</Link>
+      <Link className="link" to="/">
+        Home
+      </Link>
       <p className="score">Your score: {count}/10</p>
     </div>
   );
