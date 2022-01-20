@@ -1,18 +1,14 @@
 
 
-function Answer({text}) {
+function Answer({text, handleAnswerValue, handleResult, disable}) {
 
-
-  function checkValue(event) {
-    console.log(event.target.value);
-  }
 
 
   return (
 
     <div>
       <span>{text}</span>
-      <input type="radio" onChange={checkValue} value={text}/>
+      <input type="radio" onChange={handleAnswerValue} onClick={(event) => handleResult(event)} value={text} disabled={disable}/>
     </div>
   )
 }
