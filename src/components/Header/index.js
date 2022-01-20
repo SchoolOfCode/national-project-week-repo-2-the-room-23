@@ -1,4 +1,5 @@
 import "./style.css";
+import logo from "../../img-src/logo.png";
 
 const Header = () => {
   return (
@@ -9,10 +10,7 @@ const Header = () => {
           <p className="intro__text">_theSchoolofCode_edition</p>
         </div>
         <div className="img-container">
-          <img
-            src="https://d33wubrfki0l68.cloudfront.net/e6fddcbea146f91d2f3c160f7d56a9391a4740b0/4e758/static/logo-51c754388b198e5bbb0d08a971ebbfa2.png"
-            alt="school of code"
-          />
+          <img src={logo} alt="school of code" />
         </div>
       </div>
     </header>
