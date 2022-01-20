@@ -32,8 +32,8 @@ function Quiz({ actualQuestion, handleResult, position }) {
         //disable={disable}
       />
       <SubmitButton />
-      <Link to="/">Home</Link>
-      <Link to="/answers">Answers</Link>
+      {/* <Link to="/">Home</Link> */}
+      {/* <Link to="/answers">Answers</Link> */}
     </div>
   );
 }

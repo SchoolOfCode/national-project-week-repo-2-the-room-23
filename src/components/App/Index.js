@@ -33,7 +33,7 @@ function App() {
           element={<Introduction handleTopic={getTopicValue} />}
         />
         <Route path="/questions" element={<MainContent topic={topic} />} />
-        <Route path="/answers" />
+        <Route path="/answers" element={<ShowResults />} />
       </Routes>
     </div>
   );

@@ -4,7 +4,7 @@ const ShowResults = ({ count }) => {
   return (
     <div className="scorecontainer">
       <Link to="/">Home</Link>
-      <p className="score">{count}/10</p>
+      <p className="score">Your score: {count}/10</p>
     </div>
   );
 };

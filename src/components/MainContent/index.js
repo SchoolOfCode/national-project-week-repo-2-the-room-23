@@ -3,6 +3,7 @@ import Quiz from "../Quiz/index";
 import { API_URL } from "../../config/index.js";
 import { useEffect, useState } from "react";
 import ShowResults from "../ShowResults";
+import { Link } from "react-router-dom";
 
 const MainContent = ({ topic }) => {
   const [questionsArray, setQuestionsArray] = useState([]);
@@ -62,7 +63,9 @@ const MainContent = ({ topic }) => {
         correctAnswer={correctAnswer}
         handleResult={checkResult}
       />
-      <ShowResults handleCount={count} result={result} />
+      <Link to="/">Home</Link> <br />
+      <Link to="/answers">Click for your results</Link>
+      {/* <ShowResults handleCount={count} result={result} /> */}
     </main>
   );
 };
