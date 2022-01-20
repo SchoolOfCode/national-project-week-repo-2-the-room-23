@@ -1,0 +1,47 @@
+:root {
+  --background-color: #32a4dc;
+  --color: #000817;
+  --secondary-color: #ffffff;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  font-family: monospace;
+  letter-spacing: 4px;
+  min-height: 220px;
+  color: var(--color);
+  background: var(--background-color);
+}
+
+/* .text-container {
+  border: 3px solid red;
+} */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1250px;
+}
+
+.intro__text {
+  font-family: monospace;
+  font-size: 1.125rem;
+  margin: 1em 0 2em 4em;
+  letter-spacing: 4px;
+  color: var(--color);
+}
+
+.intro__title {
+  font-size: 2rem;
+  margin-left: 0.5em;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+}

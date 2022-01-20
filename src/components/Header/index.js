@@ -1,8 +1,18 @@
+import "./style.css";
+import logo from "../../img-src/logo.png";
+
 const Header = () => {
   return (
-    <header>
-      <h1>SOC Quiz</h1>
-      <img src="./img/maxresdefault.jpg" alt="school of code" />
+    <header className="intro">
+      <div className="container">
+        <div className="text-container">
+          <h1 className="intro__title">masterMind</h1>
+          <p className="intro__text">_theSchoolofCode_edition</p>
+        </div>
+        <div className="img-container">
+          <img src={logo} alt="school of code" />
+        </div>
+      </div>
     </header>
   );
 };
