@@ -1,18 +1,14 @@
+import "./Answer.css";
 
+function Answer({text, handleAnswerValue, handleResult, disable}) {
 
-function Answer({text}) {
-
-
-  function checkValue(event) {
-    console.log(event.target.value);
-  }
 
 
   return (
 
     <div>
-      <span>{text}</span>
-      <input type="radio" onChange={checkValue} value={text}/>
+      <label onClick={(event) => {return handleResult(event)}}>{text}</label>
+      <input type="radio" onChange={handleAnswerValue} value={text} disabled={disable}/>
     </div>
   )
 }

@@ -8,8 +8,9 @@ const MainContent = ({ topic }) => {
 
   const [actualQuestion, setActualQuestion] = useState({});
   console.log(actualQuestion);
-  const [position, setPosition] = useState(0);
+  const [position, setPosition] = useState(1);
 
+  const [progression, setProgression] = useState(0);
   //console.log(questionsArray);
 
   useEffect(() => {
@@ -28,12 +29,16 @@ const MainContent = ({ topic }) => {
     setActualQuestion(questionsArray[position]);
   }
 
+  function correctAnswer() {
+    setProgression(progression + 1);
+  }
+
   return (
-    <main>
-      <NextQuestion handleNextQuestion={handleNextQuestion} />
-      <Quiz actualQuestion={actualQuestion} position={position} />
-    </main>
-  );
+       <main>
+         <NextQuestion handleNextQuestion={handleNextQuestion}  />
+         <Quiz actualQuestion={actualQuestion}  position={position} correctAnswer={correctAnswer} />
+       </main>
+  )
 };
 
 export default MainContent;
