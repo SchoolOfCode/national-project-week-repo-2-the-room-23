@@ -8,29 +8,34 @@ import Introduction from "../Introduction/index.js";
 
 
 function App() {
-
+  // State to control the Topic questions
   const [topic, setTopic] = useState("");
-
+  // State to control the result of the answering questions
   const [result, setResult] = useState(0);
+  console.log(result);
 
-
-
+  // Function to change the topic state depends of the option selected
   function getTopicValue(event) {
     const newTopic = event.target.name;
     setTopic(newTopic);
   }
-
+  // Function to add points to the final result state
   function addPoints() {
     setResult( result + 1);
+  }
+
+  function resetResult() {
+    setResult(0);
   }
 
   return (
     <div className="App">
       <Header />
+      {/* use Routes and route to manage the Topics navigation*/}
       <Routes>
         <Route path="/" element={<Introduction handleTopic={getTopicValue} />} />
-        <Route path="/questions" element={<MainContent topic={topic} handleAddPoints={addPoints} />} />
-        <Route path="/results" element={<ShowResults result={result} />} />
+        <Route path="/questions" element={<MainContent topic={topic} handleAddPoints={addPoints} handleResetResult={resetResult} />} />
+        <Route path="/results" element={<ShowResults result={result} handleResetResult={resetResult} />} />
       </Routes>
     </div>
   );

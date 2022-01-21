@@ -5,47 +5,58 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./MainContent.css";
 
-const MainContent = ({ topic, handleAddPoints }) => {
+// MainContent component which it's showing the questions and answers of aour game
+const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
+  // State for holding the questions data from the back-end claud database
   const [questionsArray, setQuestionsArray] = useState([]);
-
+  
+  // State for holding the actual question representing
   const [actualQuestion, setActualQuestion] = useState({});
   
+  // State for holding the position of the actual question in the questionsArray
   const [position, setPosition] = useState(1);
-
+  
+  // 
   const [progression, setProgression] = useState(0);
 
+  // State holding a boolean parameter for disable the click answers
   const [disable, setDisable] = useState(false); 
-  console.log(disable);
 
-  const [array , setArray] = useState([]);
 
   const [color , setColor] = useState("");
 
+  const [answerArray , setAnswerArray] = useState([]);
 
-  //console.log(questionsArray);
-
+  // Function for getting the data from the back-end depends of the Topic end-point 
   useEffect(() => {
+    
     async function getData(topic) {
       const response = await fetch(`${API_URL}/questions/${topic}`);
       const data = await response.json();
+      // Set the questions array with the data from the fetch request
       setQuestionsArray(data.payload);
+      // Set the actual questions with the first question from the data
       setActualQuestion(data.payload[0]);
-      //console.log(data);
+
+      setAnswerArray(randomArray(data.payload[0]));
+
     }
+    // Call the function for getiting the data from the back-end
     getData(topic);
   }, [topic]);
 
+function randomArray(obj) {
 
 const value = {
-   a: actualQuestion.opta,
-   b: actualQuestion.optb,
-   c: actualQuestion.optc,
-   d: actualQuestion.answer
-        
+
+   a: obj.opta,
+   b: obj.optb,
+   c: obj.optc,
+   d: obj.answer       
 } 
 
 const answersArray = Object.values(value);  
-/*
+
 function randomizeArray(array) {
    const element = array[array.length - 1]
    const randomPosition = Math.floor(Math.random() * array.length);
@@ -53,8 +64,9 @@ function randomizeArray(array) {
    return newArray;
 }
 
-const randomArray = disable === false ? setArray(randomizeArray(answersArray)) : "" ;
-*/
+return randomizeArray(answersArray);
+
+}
 
 
 
@@ -65,6 +77,7 @@ const randomArray = disable === false ? setArray(randomizeArray(answersArray)) :
 
   function changeQuestion(){
     setActualQuestion(questionsArray[position]);
+    setAnswerArray(randomArray(questionsArray[position]));
   }
 
   function handleNextQuestion() {
@@ -101,12 +114,12 @@ const randomArray = disable === false ? setArray(randomizeArray(answersArray)) :
                position={position} 
                correctAnswer={correctAnswer}
                handleResult={checkResult}
-               randomArray={answersArray} 
+               randomArray={answerArray} 
                color={color}  
                />
            <NextQuestion handleChangeQuestion={changeQuestion} handleNextQuestion={handleNextQuestion} handleDisable={handleDisable} position={position}  />     
         <Link className={position === 10 ? "button" : "button disable"} to="/results">See your sesult</Link>
-        <Link className="link" to="/">
+        <Link className="link" to="/" onClick={handleResetResult}>
           <div className="homeButton">
           <div id="homeTshirt"></div>
         </div>
