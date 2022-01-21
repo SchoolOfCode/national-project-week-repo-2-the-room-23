@@ -1,5 +1,5 @@
 import "./style.css";
-
+// Function for rendering the questions 
 function Questions({ text, position }) {
   return(
     <div className="question">

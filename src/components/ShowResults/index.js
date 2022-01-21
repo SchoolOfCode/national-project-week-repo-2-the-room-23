@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import head from "../../img-src/grey-matter-removebg-preview.png";
 import "./style.css";
 
+
+// ShowResult component for showing the results of the quizz
 const ShowResults = ({ result, handleResetResult }) => {
   return (
     <div className="scoreContainer">

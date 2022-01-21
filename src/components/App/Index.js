@@ -23,7 +23,7 @@ function App() {
   function addPoints() {
     setResult( result + 1);
   }
-
+  // Function for reseting the result state
   function resetResult() {
     setResult(0);
   }

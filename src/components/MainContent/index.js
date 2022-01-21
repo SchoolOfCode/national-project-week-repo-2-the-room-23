@@ -15,9 +15,6 @@ const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
   
   // State for holding the position of the actual question in the questionsArray
   const [position, setPosition] = useState(1);
-  
-  // 
-  const [progression, setProgression] = useState(0);
 
   // State holding a boolean parameter for disable the click answers
   const [disable, setDisable] = useState(false); 
@@ -25,6 +22,7 @@ const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
 
   const [color , setColor] = useState("");
 
+  // State for holding the array os answers to chow
   const [answerArray , setAnswerArray] = useState([]);
 
   // Function for getting the data from the back-end depends of the Topic end-point 
@@ -45,83 +43,72 @@ const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
     getData(topic);
   }, [topic]);
 
-function randomArray(obj) {
+  // Function for Making and object answers from the question object into an array and randomize the positions
+  function randomArray(obj) {
+  // Make and object with the question answers
+  const value = { 
+    a: obj.opta,
+    b: obj.optb,
+    c: obj.optc,
+    d: obj.answer       
+  }  
+  // Convert the object value into an array 
+  const answersArray = Object.values(value);  
+  // Function for changing the position of the values by random numbers 
+    function randomizeArray(array) {
+      const element = array[array.length - 1]
+      const randomPosition = Math.floor(Math.random() * array.length);
+      const newArray = [...array.slice(0,randomPosition), element, ...array.slice(randomPosition, array.length -1)];
+      return newArray;
+    }
+   // Return the random array
+   return randomizeArray(answersArray);
 
-const value = {
+  }
 
-   a: obj.opta,
-   b: obj.optb,
-   c: obj.optc,
-   d: obj.answer       
-} 
-
-const answersArray = Object.values(value);  
-
-function randomizeArray(array) {
-   const element = array[array.length - 1]
-   const randomPosition = Math.floor(Math.random() * array.length);
-   const newArray = [...array.slice(0,randomPosition), element, ...array.slice(randomPosition, array.length -1)];
-   return newArray;
-}
-
-return randomizeArray(answersArray);
-
-}
-
-
-
-
+  // Function for setting the disable state to false
   function handleDisable() {
     setDisable(false);
   }
-
+  // Function for setting the next question as actual question anda randomize the answers
   function changeQuestion(){
     setActualQuestion(questionsArray[position]);
     setAnswerArray(randomArray(questionsArray[position]));
   }
-
+  // Function for setting the position of the actual answer
   function handleNextQuestion() {
     setPosition(position + 1);
   }
+  // Function for checking the results of the answer when it has been clicked
+  function checkResult(event) {
+    
+    setDisable(true);
 
-  function correctAnswer() {
-    setProgression(progression + 1);
-  }
-
-   function checkResult(event) {
-     setDisable(true);
-  
-     console.log(event.currentTarget);
-     console.log(actualQuestion.answer);
     if ( event.target.innerText === actualQuestion.answer) {
-        event.currentTarget.className = "green";
-        setColor("green")
-        console.log("correct");
-        handleAddPoints();
-        //correctAnswer();
+      setColor("green")
+      handleAddPoints();
+      event.currentTarget.className = "green";
     }else{
        event.currentTarget.className = "red";
        setColor("red");
-       console.log("incorrect");
      }
   }
 
   return (
        <main>
-         <Quiz className={disable === true? "white": ""}
+         <Quiz 
                actualQuestion={actualQuestion}
                disable={disable} 
                position={position} 
-               correctAnswer={correctAnswer}
                handleResult={checkResult}
                randomArray={answerArray} 
                color={color}  
                />
-           <NextQuestion handleChangeQuestion={changeQuestion} handleNextQuestion={handleNextQuestion} handleDisable={handleDisable} position={position}  />     
+        <NextQuestion handleChangeQuestion={changeQuestion} handleNextQuestion={handleNextQuestion} handleDisable={handleDisable} position={position}  />     
         <Link className={position === 10 ? "button" : "button disable"} to="/results">See your sesult</Link>
         <Link className="link" to="/" onClick={handleResetResult}>
           <div className="homeButton">
-          <div id="homeTshirt"></div>
+            <div id="homeTshirt"></div>
         </div>
         </Link>
        </main>

@@ -1,13 +1,10 @@
 import "./Answer.css";
 
-function Answer({text, className, handleAnswerValue, handleResult, disable, color}) {
-
-
+// Function for rendering an answer
+function Answer({text, handleResult, disable }) {
 
   return (
-    
-      <li onClick={disable === false ? (event) => {return handleResult(event)} : () => {} }>{text}</li>
-
+      <li className="" style={disable === false ? {backgroundColor: "white"}: {}} onClick={disable === false ? (event) => {return handleResult(event)} : () => {} }>{text}</li>
   )
 }
 
