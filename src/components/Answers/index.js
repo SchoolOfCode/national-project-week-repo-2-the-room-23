@@ -1,9 +1,9 @@
-
+import "./Answers.css";
 import Answer from "../Answer/index.js"
 
 
-function Answers({handleAnswerValue, handleResult, answer, optA, optB, optC, disable}){
-
+function Answers({handleAnswerValue, handleResult, answer, optA, optB, optC, disable, randomArray, color}){
+/*
 const value = {
    a: optA,
    b: optB,
@@ -22,22 +22,23 @@ function randomizeArray(array) {
 }
 
 const randomArray = randomizeArray(answersArray);
-
+*/
 
 return(
        <ul>
-          {answersArray.map( (element,index) => {
+          {randomArray.map( (element,index) => {
              return( 
-                                              <Answer handleAnswerValue={handleAnswerValue}
-                                              className="white"
-                                              handleResult={handleResult}
-                                              text={element} 
-                                              disable={disable}
-                                              key={index}
+               <Answer handleAnswerValue={handleAnswerValue}
+               className="white"
+               handleResult={handleResult}
+               text={element} 
+               disable={disable}
+               key={index}
+               color={color}
 
-                                              />
-                   )
-                                              })
+               />
+            )
+          })
           }
        </ul>
     )

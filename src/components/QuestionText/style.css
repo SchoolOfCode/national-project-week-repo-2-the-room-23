@@ -1,5 +1,17 @@
-.question-text {
+
+.question {
+  padding: 1.5rem;
   font-family: monospace;
+}
+
+.question-text {
+  margin-block-start: 0.1;
+  margin-block-end: 0;
   font-size: 2rem;
   font-weight: bold;
+}
+
+.questionNumber {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }

@@ -6,27 +6,19 @@ import { Routes, Route } from "react-router-dom";
 import Header from "../Header";
 import Introduction from "../Introduction/index.js";
 
+
 function App() {
-/*   useEffect(() => {
-    async function getData() {
-      const response = await fetch(`${API_URL}/questions`);
-      const data = await response.json();
-      console.log(data);
-    }
-    getData();
-  }, []); */
 
   const [topic, setTopic] = useState("");
 
   const [result, setResult] = useState(0);
-  console.log(result);
+
 
 
   function getTopicValue(event) {
-    
     const newTopic = event.target.name;
     setTopic(newTopic);
-  } 
+  }
 
   function addPoints() {
     setResult( result + 1);

@@ -1,30 +1,14 @@
 import { useState } from "react";
 import QuestionText from "../QuestionText";
 import Answers from "../Answers/index";
-import SubmitButton from "../SubmitButton/index";
 import { Link } from "react-router-dom";
 
-function Quiz({actualQuestion, handleResult, disable }){
+function Quiz({actualQuestion, handleResult, disable, randomArray, color, position }){
 
-
-//console.log(chosenAnswer);
-//const [disable, setDisable] = useState(false);
-//const [answersColor , setanswerColor] = useState("");
-//console.log(chosenAnswer);
-//console.log(actualQuestion.answer);
-
-/*
-
-  function getAnswerValue(event) {
-    setChosenAnswer(event.target.value);
-    setDisable(true);
-  }
-
-*/
 
     return ( 
-      <div>
-        <QuestionText  text={actualQuestion.question} id={actualQuestion.id} />
+      <div className="Quizz">
+        <QuestionText  text={actualQuestion.question} id={actualQuestion.id} position={position} />
         <Answers  
                  handleResult={handleResult}
                  disable={disable}
@@ -32,10 +16,11 @@ function Quiz({actualQuestion, handleResult, disable }){
                  optA={actualQuestion.opta} 
                  optB={actualQuestion.optb} 
                  optC={actualQuestion.optc}
+                 randomArray={randomArray}
+                 color={color}
                  //disable={disable}
                   
                  />
-        <Link to="/">Home</Link>
       </div>
     )
 }
