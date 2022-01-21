@@ -3,7 +3,7 @@ import QuestionText from "../QuestionText";
 import Answers from "../Answers/index";
 
 // Quiz component for rendering the quizz and andswers
-function Quiz({actualQuestion, handleResult, disable, randomArray, position }){
+function Quiz({actualQuestion, handleResult, disable, randomArray, position, isCorrect, nextQuestion }){
 
 
     return ( 
@@ -16,7 +16,9 @@ function Quiz({actualQuestion, handleResult, disable, randomArray, position }){
            optA={actualQuestion.opta} 
            optB={actualQuestion.optb} 
            optC={actualQuestion.optc}
-           randomArray={randomArray}    
+           randomArray={randomArray}
+           isCorrect={isCorrect}  
+           nextQuestion={nextQuestion}  
            />
       </div>
     )

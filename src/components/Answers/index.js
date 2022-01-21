@@ -2,7 +2,7 @@ import "./Answers.css";
 import Answer from "../Answer/index.js"
 
 // Function for representing and answers list for every answer
-function Answers({handleAnswerValue, handleResult, disable, randomArray }){
+function Answers({handleAnswerValue, handleResult, disable, randomArray, isCorrect, nextQuestion }){
 
 return(
        <ul>
@@ -14,6 +14,8 @@ return(
                text={element} 
                disable={disable}
                key={index}
+               isCorrect={isCorrect}
+               nextQuestion={nextQuestion}
                />
             )
           })

@@ -18,9 +18,13 @@ const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
 
   // State holding a boolean parameter for disable the click answers
   const [disable, setDisable] = useState(false); 
+  
+  // State for setting the color os the answers depending if its correct, incorrect or not selected
+  const [isCorrect, SetIsCorrecT] = useState("white");
+  
+  // State for checking when nextQuestion is pressed
+  const [nextQuestion, setNextquestion] = useState("true");
 
-
-  const [color , setColor] = useState("");
 
   // State for holding the array os answers to chow
   const [answerArray , setAnswerArray] = useState([]);
@@ -35,7 +39,7 @@ const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
       setQuestionsArray(data.payload);
       // Set the actual questions with the first question from the data
       setActualQuestion(data.payload[0]);
-
+      // Set the first random oreder for answers
       setAnswerArray(randomArray(data.payload[0]));
 
     }
@@ -66,6 +70,10 @@ const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
 
   }
 
+  function toggleNextQuestion() {
+    setNextquestion(!nextQuestion);
+  }
+
   // Function for setting the disable state to false
   function handleDisable() {
     setDisable(false);
@@ -74,6 +82,8 @@ const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
   function changeQuestion(){
     setActualQuestion(questionsArray[position]);
     setAnswerArray(randomArray(questionsArray[position]));
+    SetIsCorrecT("white");
+    toggleNextQuestion();
   }
   // Function for setting the position of the actual answer
   function handleNextQuestion() {
@@ -81,16 +91,16 @@ const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
   }
   // Function for checking the results of the answer when it has been clicked
   function checkResult(event) {
-    
+    // set disable to true for disable the clicking on answers
     setDisable(true);
 
     if ( event.target.innerText === actualQuestion.answer) {
-      setColor("green")
+      // set the background of the answer to green if is correct
+      SetIsCorrecT("green");
       handleAddPoints();
-      event.currentTarget.className = "green";
     }else{
-       event.currentTarget.className = "red";
-       setColor("red");
+      // set the background of the answer to red if is incorrect
+      SetIsCorrecT("red");
      }
   }
 
@@ -102,7 +112,8 @@ const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
                position={position} 
                handleResult={checkResult}
                randomArray={answerArray} 
-               color={color}  
+               isCorrect={isCorrect}
+               nextQuestion={nextQuestion}  
                />
         <NextQuestion handleChangeQuestion={changeQuestion} handleNextQuestion={handleNextQuestion} handleDisable={handleDisable} position={position}  />     
         <Link className={position === 10 ? "button" : "button disable"} to="/results">See your sesult</Link>
