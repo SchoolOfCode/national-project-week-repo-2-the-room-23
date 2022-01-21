@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import head from "../../img-src/grey-matter-removebg-preview.png";
 
-// Component to present an introduction and Topics navigation at the biginnig of our app 
+// Component to show the introduction and Topics navigation at the bbginning of our app
 const Introduction = ({ handleTopic }) => {
   return (
     <section className="flex-container">
