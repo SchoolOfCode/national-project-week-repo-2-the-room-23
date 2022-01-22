@@ -57,6 +57,7 @@ const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
     const answersArray = Object.values(value);
     // Function for changing the position of the values by random numbers
     function randomizeArray(array) {
+      // select the last item in the array.
       const element = array[array.length - 1];
       const randomPosition = Math.floor(Math.random() * array.length);
       const newArray = [
