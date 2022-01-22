@@ -9,14 +9,16 @@
   box-shadow: 3px 3px #888888;
   transition: background-color 0.5s;
   text-decoration: none;
+  border-radius: 10px;
 }
 
 .button:hover {
   background-color: #6bb8df;
+  color: #000817;
 }
 
-.button:active{
-  transform: translate(3px, 5px) ;
+.button:active {
+  transform: translate(3px, 5px);
   box-shadow: 1px 1px #888888;
 }
 
