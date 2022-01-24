@@ -13,7 +13,7 @@ const Introduction = ({ handleTopic }) => {
           className="link"
           to="/questions"
           onClick={(event) => handleTopic(event)}
-          name="questions"
+          name="topic1"
         >
           Topic 1
         </Link>
@@ -21,7 +21,7 @@ const Introduction = ({ handleTopic }) => {
           className="link"
           to="/questions"
           onClick={(event) => handleTopic(event)}
-          name="topicTwo"
+          name="topic2"
         >
           Topic 2
         </Link>
@@ -29,7 +29,7 @@ const Introduction = ({ handleTopic }) => {
           className="link"
           to="/questions"
           onClick={(event) => handleTopic(event)}
-          name="topicThree"
+          name="topic3"
         >
           Topic 3
         </Link>
