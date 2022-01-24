@@ -126,7 +126,7 @@ const MainContent = ({ topic, handleAddPoints, handleResetResult }) => {
         className={position === 10 ? "button" : "button disable"}
         to="/results"
       >
-        See your sesult
+        See your result
       </Link>
       <Link className="link" to="/" onClick={handleResetResult}>
         <div className="homeButton">
