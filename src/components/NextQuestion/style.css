@@ -1,5 +1,4 @@
 .button {
-  margin-top: 2rem;
   padding: 1rem;
   background-color: #32a4dc;
   color: white;
@@ -7,5 +6,22 @@
   font-family: monospace;
   font-size: 1.2rem;
   cursor: pointer;
-  box-shadow: 2px 5px #888888;
+  box-shadow: 3px 3px #888888;
+  transition: background-color 0.5s;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.button:hover {
+  background-color: #6bb8df;
+  color: #000817;
+}
+
+.button:active {
+  transform: translate(3px, 5px);
+  box-shadow: 1px 1px #888888;
+}
+
+.disable {
+  display: none;
 }

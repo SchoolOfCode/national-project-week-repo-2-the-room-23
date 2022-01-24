@@ -1,37 +1,34 @@
-import { useState } from "react";
 import QuestionText from "../QuestionText";
 import Answers from "../Answers/index";
-import SubmitButton from "../SubmitButton/index";
-import { Link } from "react-router-dom";
 
-function Quiz({ actualQuestion, handleResult, position }) {
-  //console.log(chosenAnswer);
-  //const [disable, setDisable] = useState(false);
-  //const [answersColor , setanswerColor] = useState("");
-  //console.log(chosenAnswer);
-  //console.log(actualQuestion.answer);
-
-  /*
-
-  function getAnswerValue(event) {
-    setChosenAnswer(event.target.value);
-    setDisable(true);
-  }
-
-*/
-
+// Quiz component for rendering the quizz and andswers
+function Quiz({
+  actualQuestion,
+  handleResult,
+  disable,
+  randomArray,
+  position,
+  isCorrect,
+  nextQuestion,
+}) {
   return (
-    <div>
-      <QuestionText text={actualQuestion.question} id={actualQuestion.id} />
+    <div className="Quizz">
+      <QuestionText
+        text={actualQuestion.question}
+        id={actualQuestion.id}
+        position={position}
+      />
       <Answers
         handleResult={handleResult}
+        disable={disable}
         answer={actualQuestion.answer}
         optA={actualQuestion.opta}
         optB={actualQuestion.optb}
         optC={actualQuestion.optc}
-        //disable={disable}
+        randomArray={randomArray}
+        isCorrect={isCorrect}
+        nextQuestion={nextQuestion}
       />
-      <SubmitButton />
     </div>
   );
 }

@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import head from "../../img-src/grey-matter-removebg-preview.png";
 
+// Component to present an introduction and Topics navigation at the biginnig of our app
 const Introduction = ({ handleTopic }) => {
   return (
     <section className="flex-container">
       <p className="title">Please select your topic:</p>
+      {/* navigation menu for the questions topics */}
       <nav className="flex-container">
         <Link
           className="link"
@@ -32,7 +34,7 @@ const Introduction = ({ handleTopic }) => {
           Topic 3
         </Link>
       </nav>
-      <img src={head} alt="a thinking head" />
+      <img className="head" src={head} alt="a thinking head" />
     </section>
   );
 };
