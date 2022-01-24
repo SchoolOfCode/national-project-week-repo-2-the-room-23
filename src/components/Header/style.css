@@ -14,6 +14,7 @@
   min-height: 220px;
   color: var(--color);
   background: var(--background-color);
+  border-bottom: 2px solid var(--color);
 }
 
 /* .text-container {
